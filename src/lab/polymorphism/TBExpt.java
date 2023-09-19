@@ -20,24 +20,24 @@ public class TBExpt {
     // Create a block to use
     TextBlock block = new TextLine("Hello");
 
-    // Print out the block
-    TBUtils.print(pen, block);
+    // // Print out the block
+    // TBUtils.print(pen, block);
 
-    TextBlock block2 = new TextLine ("this is a test.");
-    TBUtils.print(pen, block2);
+    // TextBlock block2 = new TextLine ("this is a test.");
+    // TBUtils.print(pen, block2);
 
-    TextBlock boxedLine = new TextLine("--- hello ---");
-    TBUtils.print(pen, boxedLine);
+    // TextBlock boxedLine = new TextLine("--- hello ---");
+    // TBUtils.print(pen, boxedLine);
 
-    BoxedBlock lineBox = new BoxedBlock(boxedLine);
-    TBUtils.print(pen, lineBox);
+    // BoxedBlock lineBox = new BoxedBlock(boxedLine);
+    // TBUtils.print(pen, lineBox);
 
-    BoxedBlock doubleBoxed = new BoxedBlock(lineBox);
-    TBUtils.print(pen, doubleBoxed);
+    // BoxedBlock doubleBoxed = new BoxedBlock(lineBox);
+    // TBUtils.print(pen, doubleBoxed);
 
-    TextBlock emptyLine = new TextLine("");
-    BoxedBlock emptyBox= new BoxedBlock(emptyLine);
-    TBUtils.print(pen, emptyBox);
+    // TextBlock emptyLine = new TextLine("");
+    // BoxedBlock emptyBox= new BoxedBlock(emptyLine);
+    // TBUtils.print(pen, emptyBox);
 
 
     TextLine hello = new TextLine("Hello");
@@ -45,45 +45,50 @@ public class TBExpt {
 
     VComposition helloGoodbye = new VComposition(hello, goodbye);
 
-    TBUtils.print(pen, new BoxedBlock(helloGoodbye));
+    // TBUtils.print(pen, new BoxedBlock(helloGoodbye));
     
-    BoxedBlock helloBox = new BoxedBlock(hello);
-    BoxedBlock goodbyeBox = new BoxedBlock(goodbye);
+    // BoxedBlock helloBox = new BoxedBlock(hello);
+    // BoxedBlock goodbyeBox = new BoxedBlock(goodbye);
 
-    VComposition helloGoodbye2 = new VComposition(helloBox, goodbyeBox);
-    TBUtils.print(pen, helloGoodbye2);
+    // VComposition helloGoodbye2 = new VComposition(helloBox, goodbyeBox);
+    // TBUtils.print(pen, helloGoodbye2);
 
-    HComposition helloGoodbye3 = new HComposition(helloBox, goodbye);
-    TBUtils.print(pen, helloGoodbye3);
+    // HComposition helloGoodbye3 = new HComposition(helloBox, goodbye);
+    // TBUtils.print(pen, helloGoodbye3);
     
-    HComposition helloGoodbye4 = new HComposition(goodbye, helloBox);
-    TBUtils.print(pen, helloGoodbye4);
+    // HComposition helloGoodbye4 = new HComposition(goodbye, helloBox);
+    // TBUtils.print(pen, helloGoodbye4);
 
-    /**
-     * HComposition
-     * 
-     * We would write String row(int rownum) in a similar way to BoxedBlock. 
-     * If it's the top or bottom we return dashes, for everything else return the content.
-     * Given the left/right parameters, we could have a check for where left ends and right
-     * begins.
-     * 
-     * We would write width() as the width of left and right put together.
-     * 
-     * We would write height() by taking the maximum height between left and right.
-     */
+    // VComposition helloHello = new VComposition(hello, hello);
+    // TBUtils.print(pen, helloHello);
+
+    // for(int i = 0; i < helloGoodbye4.height(); i++){
+    //   pen.println(helloGoodbye4.row(i));
+    // }
+    // Truncated helloT = new Truncated(block, 2);
+    // Truncated helloGoodbyeT = new Truncated(helloGoodbye, 4);
+
+    // TBUtils.print(pen, helloT);
+    // TBUtils.print(pen, helloGoodbye);
+    // TBUtils.print(pen, helloGoodbyeT);
+
+    RightJustified right10 = new RightJustified(helloGoodbye, 10);
+    RightJustified right20 = new RightJustified(helloGoodbye, 20);
+    RightJustified right100 = new RightJustified(helloGoodbye, 100);
+
+    // Centered right10 = new  Centered(helloGoodbye, 10);
+    // Centered right20 = new  Centered(helloGoodbye, 20);
+    // Centered right100 = new Centered(helloGoodbye, 100);
+
+    TBUtils.print(pen, right10);
+    TBUtils.print(pen, right20);
+    TBUtils.print(pen, right100);
+
+
     // Clean up after ourselves.
-    pen.close();
+    pen.close(); 
 
-    /**
-     * VComposition
-     * 
-     * For String row(int rownum), we would keep track of the widths of the top and bottom.
-     * We return the contents of the row, plus spaces if the row is in the narrower of top and bottom.
-     * 
-     * width() would be the maximum width between top and bottom
-     * height would be the sum of the heights of top and bottom
-     * 
-     */
+  
 
   } // main(String[])
 

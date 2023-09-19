@@ -31,7 +31,7 @@ public class HComposition implements TextBlock {
   public HComposition(TextBlock left, TextBlock right) {
     this.left = left;
     this.right = right;
-  } // HComposition(String)
+  } // HComposition(TextBlock, Textblock)
 
   // +---------+-----------------------------------------------------------
   // | Methods |

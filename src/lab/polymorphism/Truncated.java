@@ -1,7 +1,8 @@
 package lab.polymorphism;
 
-public class RightJustified implements TextBlock{
-   // +--------+------------------------------------------------------------
+public class Truncated implements TextBlock{
+  
+  // +--------+------------------------------------------------------------
   // | Fields |
   // +--------+
 
@@ -20,19 +21,20 @@ public class RightJustified implements TextBlock{
   // +--------------+
 
   /**
-   * Build a new block by composing left and right side by side.
+   * Build a new block from given contents and desired width.
    */
-  public RightJustified(TextBlock _contents, int _maxWidth) throws Exception
-  {
+  public Truncated (TextBlock _contents, int _maxWidth) throws Exception{
+
     this.contents = _contents;
 
-    if(_maxWidth < 0 || _maxWidth < _contents.width()){
-      throw new Exception("Invalid width " + _maxWidth);
-    }
+    if(_maxWidth < 0 || _maxWidth > this.contents.width()){
+      throw new Exception("Invalid width " + maxWidth);
+    }// if width is invalid
     else{
       this.maxWidth = _maxWidth;
     }
-  }
+  } // Truncated)TextBlock, int
+
 /**
    * Get one row from the block.
    * 
@@ -40,23 +42,20 @@ public class RightJustified implements TextBlock{
    * @exception Exception if the row number is invalid.
    */
   public String row (int i) throws Exception {
-    
+
     int mw = this.maxWidth;
-    int w = this.contents.width();
 
     // Sanity check
     if ((i < 0) || (i >= mw)) {
       throw new Exception("Invalid row " + i);
     } // if the row is invalid
 
-    // determine padding
-    if(w == mw){
-      return this.contents.row(i);
-    }
-    else{
-      String padFront = TBUtils.spaces(mw - w);
-      return padFront + this.contents.row(i);
-    }
+    String result = this.contents.row(i);
+
+    //result = this.row(i);
+    //result = this.truncateRow(this.row(i), this.maxWidth);
+    result = truncateRow(result, mw);
+    return result;    
   } // row(int)
 
   /**
@@ -72,5 +71,18 @@ public class RightJustified implements TextBlock{
   public int width(){
     return this.maxWidth;
   } // width()
-  
-} // class RightJustified
+
+
+  public String truncateRow (String row, int max){
+
+    char[] truncatedRow = new char[max];
+    char[] rowArr = row.toCharArray();
+
+    for(int i = 0; i < max; i++){
+      truncatedRow[i] = rowArr[i];
+    }
+
+    return new String(truncatedRow);
+  } // truncateRow (String, int)
+
+} // class Truncated

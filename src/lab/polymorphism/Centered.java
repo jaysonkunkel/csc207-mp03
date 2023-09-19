@@ -1,7 +1,7 @@
 package lab.polymorphism;
 
-public class RightJustified implements TextBlock{
-   // +--------+------------------------------------------------------------
+public class Centered implements TextBlock{
+  // +--------+------------------------------------------------------------
   // | Fields |
   // +--------+
 
@@ -20,9 +20,9 @@ public class RightJustified implements TextBlock{
   // +--------------+
 
   /**
-   * Build a new block by composing left and right side by side.
+   * Build a new block by centering contents in a given width.
    */
-  public RightJustified(TextBlock _contents, int _maxWidth) throws Exception
+  public Centered(TextBlock _contents, int _maxWidth) throws Exception
   {
     this.contents = _contents;
 
@@ -31,8 +31,9 @@ public class RightJustified implements TextBlock{
     }
     else{
       this.maxWidth = _maxWidth;
-    }
-  }
+    } // if the width is invalid
+  } // Centered(TextBlock, int)
+
 /**
    * Get one row from the block.
    * 
@@ -54,8 +55,9 @@ public class RightJustified implements TextBlock{
       return this.contents.row(i);
     }
     else{
-      String padFront = TBUtils.spaces(mw - w);
-      return padFront + this.contents.row(i);
+      String padFront = TBUtils.spaces((mw - w) / 2);
+      String padBack = padFront;
+      return "|" + padFront + this.contents.row(i) + padBack + "|";
     }
   } // row(int)
 
@@ -73,4 +75,4 @@ public class RightJustified implements TextBlock{
     return this.maxWidth;
   } // width()
   
-} // class RightJustified
+} // class Centered

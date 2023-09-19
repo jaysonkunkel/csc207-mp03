@@ -1,6 +1,13 @@
-lab-polymorphism-2019
-=====================
+Members: 
+    Jayson Kunkel
 
-A lab on polymorphism, based on an old lab from _The Tao of Java_, itself
-based on an even older lab from _Espresso_.  Old labs never die; they just
-get recycled.
+About:
+    This submission contains the source code for Mini Project 3: Text Layout.
+
+Resources:
+    Class 09 lab:  
+        This mini project is an extension of the Subtype Polymorphism lab, written by SamR and
+        completed by myself and Livia in class.
+    Class 02 lab: reverse string function
+    Unit testing notes
+    Subtype polymorphism notes

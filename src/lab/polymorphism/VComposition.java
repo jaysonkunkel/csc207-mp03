@@ -31,7 +31,7 @@ public class VComposition implements TextBlock {
   public VComposition(TextBlock top, TextBlock bottom) {
     this.top = top;
     this.bottom = bottom;
-  } // VComposition(String)
+  } // VComposition(TextBlock, TextBlock)
 
   // +---------+-----------------------------------------------------------
   // | Methods |
