@@ -1,5 +1,10 @@
 package lab.polymorphism;
 
+/**
+ * A text block right-justified in a given width.
+ *
+ * @author Jayson Kunkel
+ */
 public class RightJustified implements TextBlock{
    // +--------+------------------------------------------------------------
   // | Fields |
@@ -31,8 +36,9 @@ public class RightJustified implements TextBlock{
     }
     else{
       this.maxWidth = _maxWidth;
-    }
-  }
+    } // if width is invalid
+  } // RightJustified (TextBlock, int)
+
 /**
    * Get one row from the block.
    * 
@@ -43,9 +49,10 @@ public class RightJustified implements TextBlock{
     
     int mw = this.maxWidth;
     int w = this.contents.width();
+    int h = this.contents.height();
 
     // Sanity check
-    if ((i < 0) || (i >= mw)) {
+    if ((i < 0) || (i >= h)) {
       throw new Exception("Invalid row " + i);
     } // if the row is invalid
 

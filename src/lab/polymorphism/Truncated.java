@@ -1,5 +1,10 @@
 package lab.polymorphism;
 
+/**
+ * A text block truncated to a given width.
+ *
+ * @author Jayson Kunkel
+ */
 public class Truncated implements TextBlock{
   
   // +--------+------------------------------------------------------------
@@ -27,13 +32,13 @@ public class Truncated implements TextBlock{
 
     this.contents = _contents;
 
-    if(_maxWidth < 0 || _maxWidth > this.contents.width()){
+    if(_maxWidth < 0 ){
       throw new Exception("Invalid width " + maxWidth);
     }// if width is invalid
     else{
       this.maxWidth = _maxWidth;
     }
-  } // Truncated)TextBlock, int
+  } // Truncated (TextBlock, int)
 
 /**
    * Get one row from the block.
@@ -44,16 +49,15 @@ public class Truncated implements TextBlock{
   public String row (int i) throws Exception {
 
     int mw = this.maxWidth;
+    int h = this.contents.height();
 
     // Sanity check
-    if ((i < 0) || (i >= mw)) {
+    if ((i < 0) || (i >= h)) {
       throw new Exception("Invalid row " + i);
     } // if the row is invalid
 
     String result = this.contents.row(i);
 
-    //result = this.row(i);
-    //result = this.truncateRow(this.row(i), this.maxWidth);
     result = truncateRow(result, mw);
     return result;    
   } // row(int)
@@ -72,11 +76,21 @@ public class Truncated implements TextBlock{
     return this.maxWidth;
   } // width()
 
-
+  /**
+   * Truncates a String to the specified width.
+   * 
+   * @param row The row to truncate
+   * @param max The max width of the Truncated block
+   * @return The given row truncated to the given width
+   */
   public String truncateRow (String row, int max){
 
     char[] truncatedRow = new char[max];
     char[] rowArr = row.toCharArray();
+
+    if(max > contents.width()){
+      return row + TBUtils.spaces(max - contents.width()) + "|";
+    }
 
     for(int i = 0; i < max; i++){
       truncatedRow[i] = rowArr[i];

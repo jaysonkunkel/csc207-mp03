@@ -1,5 +1,10 @@
 package lab.polymorphism;
 
+/**
+ * A text block centered in a given width.
+ *
+ * @author Jayson Kunkel
+ */
 public class Centered implements TextBlock{
   // +--------+------------------------------------------------------------
   // | Fields |
@@ -44,9 +49,10 @@ public class Centered implements TextBlock{
     
     int mw = this.maxWidth;
     int w = this.contents.width();
+    int h = this.contents.height();
 
     // Sanity check
-    if ((i < 0) || (i >= mw)) {
+    if ((i < 0) || (i >= h)) {
       throw new Exception("Invalid row " + i);
     } // if the row is invalid
 

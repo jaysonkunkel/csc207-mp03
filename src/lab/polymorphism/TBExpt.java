@@ -65,25 +65,32 @@ public class TBExpt {
     // for(int i = 0; i < helloGoodbye4.height(); i++){
     //   pen.println(helloGoodbye4.row(i));
     // }
-    // Truncated helloT = new Truncated(block, 2);
-    // Truncated helloGoodbyeT = new Truncated(helloGoodbye, 4);
+     Truncated helloT = new Truncated(block, 2);
+     Truncated helloGoodbyeT = new Truncated(helloGoodbye, 10);
 
     // TBUtils.print(pen, helloT);
     // TBUtils.print(pen, helloGoodbye);
     // TBUtils.print(pen, helloGoodbyeT);
 
-    RightJustified right10 = new RightJustified(helloGoodbye, 10);
-    RightJustified right20 = new RightJustified(helloGoodbye, 20);
-    RightJustified right100 = new RightJustified(helloGoodbye, 100);
+    // RightJustified right10 = new RightJustified(helloGoodbye, 10);
+    // RightJustified right20 = new RightJustified(helloGoodbye, 20);
+    // RightJustified right100 = new RightJustified(helloGoodbye, 100);
 
     // Centered right10 = new  Centered(helloGoodbye, 10);
     // Centered right20 = new  Centered(helloGoodbye, 20);
     // Centered right100 = new Centered(helloGoodbye, 100);
 
-    TBUtils.print(pen, right10);
-    TBUtils.print(pen, right20);
-    TBUtils.print(pen, right100);
+    // TBUtils.print(pen, right10);
+    // TBUtils.print(pen, right20);
+    // TBUtils.print(pen, right100);
 
+    HorizontallyFlipped helloHF = new HorizontallyFlipped(helloGoodbye);
+    VerticallyFlipped helloVF = new VerticallyFlipped(helloGoodbye);
+    LeetSpeak helloLeet = new LeetSpeak(helloGoodbye);
+
+    // TBUtils.print(pen, helloHF);
+    // TBUtils.print(pen, helloVF);
+    TBUtils.print(pen, helloLeet);
 
     // Clean up after ourselves.
     pen.close(); 
