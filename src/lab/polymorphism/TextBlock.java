@@ -29,4 +29,14 @@ public interface TextBlock {
    */
   public int width();
 
+  /** 
+   * Access the contents of the block.
+   */
+  public TextBlock getContents();
+
+  /**
+   * Determine if two TextBlocks are equal (built in the same way)
+   */
+  public boolean eqv(TextBlock other);
+
 } // interface TextBlock

@@ -31,7 +31,7 @@ public class RightJustified implements TextBlock{
   {
     this.contents = _contents;
 
-    if(_maxWidth < 0 || _maxWidth < _contents.width()){
+    if(_maxWidth < 0 ){
       throw new Exception("Invalid width " + _maxWidth);
     }
     else{
@@ -57,9 +57,15 @@ public class RightJustified implements TextBlock{
     } // if the row is invalid
 
     // determine padding
+    // return the row
     if(w == mw){
       return this.contents.row(i);
     }
+    // truncate the row
+    else if(w > mw){
+      return TBUtils.truncateRow(this.contents.row(i), w, mw);
+    }
+    // pad with spaces to the front
     else{
       String padFront = TBUtils.spaces(mw - w);
       return padFront + this.contents.row(i);
@@ -79,5 +85,20 @@ public class RightJustified implements TextBlock{
   public int width(){
     return this.maxWidth;
   } // width()
+
+  /**
+   * Access the contents of the block.
+   */
+  public TextBlock getContents(){
+    return this.contents;
+  } // getContents()
+  
+  /**
+   * Determine if two TextBlocks are equal (built in the same way)
+   */
+  public boolean eqv(TextBlock other){
+    boolean sameType = this instanceof RightJustified && other instanceof RightJustified;
+    return sameType && this.contents.eqv(other.getContents());
+  } // eqv (TextBlock)
   
 } // class RightJustified

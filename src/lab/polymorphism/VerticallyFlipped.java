@@ -58,4 +58,19 @@ public class VerticallyFlipped implements TextBlock{
     return this.contents.width();
   } // width()
 
+  /**
+   * Access the contents of the block.
+   */
+  public TextBlock getContents(){
+    return this.contents;
+  } // getContents()
+  
+  /**
+   * Determine if two TextBlocks are equal (built in the same way)
+   */
+  public boolean eqv(TextBlock other){
+    boolean sameType = this instanceof VerticallyFlipped && other instanceof VerticallyFlipped;
+    return sameType && this.contents.eqv(other.getContents());
+  } // eqv (TextBlock)
+
 } // class VerticallyFlipped

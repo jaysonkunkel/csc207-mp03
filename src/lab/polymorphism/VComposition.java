@@ -87,4 +87,49 @@ public class VComposition implements TextBlock {
     return Math.max(this.top.width(), this.bottom.width());
   } // width()
 
+  /**
+   * Access the contents of the block.
+   */
+  public TextBlock getContents(){
+    return this;
+  } // getContents()
+
+  /**
+   * Access the top part of the block.
+   */
+  public TextBlock getTop(){
+    return this.top;
+  } // getTop()
+
+  /**
+   * Access the bottom part of the block.
+   */
+  public TextBlock getBottom(){
+    return this.bottom;
+  } // getBottom()
+  
+  /**
+   * Determine if two TextBlocks are equal (built in the same way)
+   */
+  public boolean eqv(TextBlock other){
+    boolean sameType = this instanceof VComposition && other instanceof VComposition;
+
+    if(!sameType){
+      return false;
+    }
+
+    VComposition otherVC = (VComposition) other;
+    return this.eqvTB(otherVC);
+
+  } // eqv (TextBlock)
+
+  /**
+   * Determine if the left and right sides of an HComposition are equal (built in the same way)
+   */
+  public boolean eqvTB (VComposition other){
+    boolean equalLefts = this.top.eqv(other.getTop());
+    boolean equalRights = this.bottom.eqv(other.getBottom());
+    return equalLefts && equalRights;
+  } // eqvTB (VComposition)
+
 } // class VComposition

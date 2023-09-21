@@ -48,6 +48,7 @@ public class Truncated implements TextBlock{
    */
   public String row (int i) throws Exception {
 
+    int w = this.contents.width();
     int mw = this.maxWidth;
     int h = this.contents.height();
 
@@ -58,7 +59,7 @@ public class Truncated implements TextBlock{
 
     String result = this.contents.row(i);
 
-    result = truncateRow(result, mw);
+    result = TBUtils.truncateRow(result, w, mw);
     return result;    
   } // row(int)
 
@@ -77,26 +78,18 @@ public class Truncated implements TextBlock{
   } // width()
 
   /**
-   * Truncates a String to the specified width.
-   * 
-   * @param row The row to truncate
-   * @param max The max width of the Truncated block
-   * @return The given row truncated to the given width
+   * Access the contents of the block.
    */
-  public String truncateRow (String row, int max){
-
-    char[] truncatedRow = new char[max];
-    char[] rowArr = row.toCharArray();
-
-    if(max > contents.width()){
-      return row + TBUtils.spaces(max - contents.width()) + "|";
-    }
-
-    for(int i = 0; i < max; i++){
-      truncatedRow[i] = rowArr[i];
-    }
-
-    return new String(truncatedRow);
-  } // truncateRow (String, int)
+  public TextBlock getContents(){
+    return this.contents;
+  } // getContents()
+  
+  /**
+   * Determine if two TextBlocks are equal (built in the same way)
+   */
+  public boolean eqv(TextBlock other){
+    boolean sameType = this instanceof Truncated && other instanceof Truncated;
+    return sameType && this.contents.eqv(other.getContents());
+  } // eqv (TextBlock)
 
 } // class Truncated

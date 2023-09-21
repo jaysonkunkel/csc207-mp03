@@ -47,17 +47,21 @@ public class TBExpt {
 
     // TBUtils.print(pen, new BoxedBlock(helloGoodbye));
     
-    // BoxedBlock helloBox = new BoxedBlock(hello);
-    // BoxedBlock goodbyeBox = new BoxedBlock(goodbye);
+    //  BoxedBlock helloBox = new BoxedBlock(hello);
+    //  BoxedBlock goodbyeBox = new BoxedBlock(goodbye);
+
+    // pen.println(helloBox.eqv(goodbyeBox));
 
     // VComposition helloGoodbye2 = new VComposition(helloBox, goodbyeBox);
     // TBUtils.print(pen, helloGoodbye2);
 
-    // HComposition helloGoodbye3 = new HComposition(helloBox, goodbye);
-    // TBUtils.print(pen, helloGoodbye3);
+    HComposition helloGoodbye3 = new HComposition(hello, goodbye);
+    TBUtils.print(pen, helloGoodbye3);
     
-    // HComposition helloGoodbye4 = new HComposition(goodbye, helloBox);
-    // TBUtils.print(pen, helloGoodbye4);
+    HComposition helloGoodbye4 = new HComposition(goodbye, hello);
+    TBUtils.print(pen, helloGoodbye4);
+
+    pen.println(helloGoodbye3.eqv(helloGoodbye4));
 
     // VComposition helloHello = new VComposition(hello, hello);
     // TBUtils.print(pen, helloHello);
@@ -65,18 +69,18 @@ public class TBExpt {
     // for(int i = 0; i < helloGoodbye4.height(); i++){
     //   pen.println(helloGoodbye4.row(i));
     // }
-     Truncated helloT = new Truncated(block, 2);
-     Truncated helloGoodbyeT = new Truncated(helloGoodbye, 10);
+    //  Truncated helloT = new Truncated(block, 2);
+    //  Truncated helloGoodbyeT = new Truncated(helloGoodbye, 4);
 
     // TBUtils.print(pen, helloT);
     // TBUtils.print(pen, helloGoodbye);
     // TBUtils.print(pen, helloGoodbyeT);
 
-    // RightJustified right10 = new RightJustified(helloGoodbye, 10);
+    // RightJustified right10 = new RightJustified(helloGoodbye, 5);
     // RightJustified right20 = new RightJustified(helloGoodbye, 20);
     // RightJustified right100 = new RightJustified(helloGoodbye, 100);
 
-    // Centered right10 = new  Centered(helloGoodbye, 10);
+    // Centered right10 = new  Centered(helloGoodbye, 5);
     // Centered right20 = new  Centered(helloGoodbye, 20);
     // Centered right100 = new Centered(helloGoodbye, 100);
 
@@ -84,13 +88,13 @@ public class TBExpt {
     // TBUtils.print(pen, right20);
     // TBUtils.print(pen, right100);
 
-    HorizontallyFlipped helloHF = new HorizontallyFlipped(helloGoodbye);
-    VerticallyFlipped helloVF = new VerticallyFlipped(helloGoodbye);
-    LeetSpeak helloLeet = new LeetSpeak(helloGoodbye);
+    // HorizontallyFlipped helloHF = new HorizontallyFlipped(helloGoodbye);
+    // VerticallyFlipped helloVF = new VerticallyFlipped(helloGoodbye);
+    // LeetSpeak helloLeet = new LeetSpeak(helloGoodbye);
 
     // TBUtils.print(pen, helloHF);
     // TBUtils.print(pen, helloVF);
-    TBUtils.print(pen, helloLeet);
+    // TBUtils.print(pen, helloLeet);
 
     // Clean up after ourselves.
     pen.close(); 

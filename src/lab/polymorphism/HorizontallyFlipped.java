@@ -77,4 +77,19 @@ public class HorizontallyFlipped implements TextBlock{
     return new String(rowArr);  
   } // reverseRow (String)
 
+  /**
+   * Access the contents of the block.
+   */
+  public TextBlock getContents(){
+    return this.contents;
+  } // getContents()
+  
+  /**
+   * Determine if two TextBlocks are equal (built in the same way)
+   */
+  public boolean eqv(TextBlock other){
+    boolean sameType = this instanceof HorizontallyFlipped && other instanceof HorizontallyFlipped;
+    return sameType && this.contents.eqv(other.getContents());
+  } // eqv (TextBlock)
+
 } // class HorizontallyFlipped

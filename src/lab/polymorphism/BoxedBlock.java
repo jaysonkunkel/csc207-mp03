@@ -67,5 +67,20 @@ public class BoxedBlock implements TextBlock {
     return 2 + this.contents.width();
   } // width()
 
+  /**
+   * Access the contents of the block.
+   */
+  public TextBlock getContents(){
+    return this.contents;
+  } // getContents()
+
+  /**
+   * Determine if two TextBlocks are equal (built in the same way)
+   */
+  public boolean eqv(TextBlock other){
+    boolean sameType = this instanceof BoxedBlock && other instanceof BoxedBlock;
+    return sameType && this.contents.eqv(other.getContents());
+  } // eqv (TextBlock)
+
 
 } // class BoxedBlock

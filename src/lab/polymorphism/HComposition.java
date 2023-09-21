@@ -1,5 +1,7 @@
 package lab.polymorphism;
 
+import org.junit.platform.console.shadow.picocli.CommandLine.Help.Ansi.Text;
+
 /**
  * The horizontal composition of two text blocks.
  * 
@@ -86,4 +88,49 @@ public class HComposition implements TextBlock {
     return this.left.width() + this.right.width();
   } // width()
 
+  /**
+   * Access the contents of the block.
+   */
+  public TextBlock getContents(){
+    return this;
+  } // getContents()
+
+  /**
+   * Access the left side of the block.
+   */
+  public TextBlock getLeft(){
+    return this.left;
+  } // getLeft()
+
+  /**
+   * Access the right side of the block.
+   */
+  public TextBlock getRight(){
+    return this.right;
+  } // getRight()
+  
+  /**
+   * Determine if two TextBlocks are equal (built in the same way)
+   */
+  public boolean eqv(TextBlock other){
+    boolean sameType = this instanceof HComposition && other instanceof HComposition;
+
+    if(!sameType){
+      return false;
+    }
+
+    HComposition otherHC = (HComposition) other;
+    return this.eqvLR(otherHC);
+
+  } // eqv (TextBlock)
+
+  /**
+   * Determine if the left and right sides of an HComposition are equal (built in the same way)
+   */
+  public boolean eqvLR (HComposition other){
+    boolean equalLefts = this.left.eqv(other.getLeft());
+    boolean equalRights = this.right.eqv(other.getRight());
+    return equalLefts && equalRights;
+  } // eqvLR (HComposition)
+  
 } // class HComposition

@@ -58,4 +58,26 @@ public class TextLine implements TextBlock {
     return this.line.length();
   } // width()
 
+  /**
+   * Access the contents of the block.
+   */
+  public TextBlock getContents(){
+    return this;
+  } // getContents()
+
+  /**
+   * Access the line of the block.
+   */
+  public String getLine(){
+    return this.line;
+  } // getLine()
+  
+  /**
+   * Determine if two TextBlocks are equal (built in the same way)
+   */
+  public boolean eqv(TextBlock other){
+    boolean sameType = this instanceof TextLine && other instanceof TextLine;
+    return sameType;
+  } // eqv (TextBlock)
+
 } // class TextLine

@@ -92,4 +92,19 @@ public class LeetSpeak implements TextBlock{
     return new String(rowArr);  
   } // toLeet (String)
 
+  /**
+   * Access the contents of the block.
+   */
+  public TextBlock getContents(){
+    return this.contents;
+  } // getContents()
+  
+  /**
+   * Determine if two TextBlocks are equal (built in the same way)
+   */
+  public boolean eqv(TextBlock other){
+    boolean sameType = this instanceof LeetSpeak && other instanceof LeetSpeak;
+    return sameType && this.contents.eqv(other.getContents());
+  } // eqv (TextBlock)
+
 } // class LeetSpeak
