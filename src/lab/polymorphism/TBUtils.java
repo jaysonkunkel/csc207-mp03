@@ -1,12 +1,12 @@
 package lab.polymorphism;
 
 import java.io.PrintWriter;
-import org.junit.platform.console.shadow.picocli.CommandLine.Help.Ansi.Text;
 
 /**
  * Utilities for TextBlocks.
  * 
  * @author Samuel A. Rebelsky
+ * @author Jayson Kunkel
  * @version 1.3 of September 2014
  */
 public class TBUtils {
@@ -85,7 +85,8 @@ public class TBUtils {
 
     // pad with spaces to the right
     if(max > width){
-      return row + TBUtils.spaces(max - width) + "|";
+      //return row + TBUtils.spaces(max - width) + "|";
+      return row + TBUtils.spaces(max-width);
     }
 
     // truncate the row
@@ -103,7 +104,7 @@ public class TBUtils {
     }
 
     for(int i = 0; i < t1.height(); i++){
-      if(t1.row(i) != t2.row(i)){
+      if(!t1.row(i).equals(t2.row(i))){
         return false;
       }
     }
@@ -111,7 +112,7 @@ public class TBUtils {
   } // equal (TextBlock, TextBlock)
 
   public static boolean eqv(TextBlock t1, TextBlock t2){
-    return false;
+    return t1.eqv(t2);
   } // eqv (TextBlock, TextBlock)
 
   public static boolean eq(TextBlock t1, TextBlock t2){

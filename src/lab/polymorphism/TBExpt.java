@@ -6,6 +6,7 @@ import java.io.PrintWriter;
  * A series of experiments with the text block layout classes.
  * 
  * @author Samuel A. Rebelsky
+ * @author Jayson Kunkel
  * @version 1.3 of September 2019
  */
 public class TBExpt {
@@ -15,10 +16,10 @@ public class TBExpt {
 
   public static void main(String[] args) throws Exception {
     // Prepare for input and output
-    PrintWriter pen = new PrintWriter(System.out, true);
+    //PrintWriter pen = new PrintWriter(System.out, true);
 
     // Create a block to use
-    TextBlock block = new TextLine("Hello");
+    //TextBlock block = new TextLine("Hello");
 
     // // Print out the block
     // TBUtils.print(pen, block);
@@ -40,28 +41,30 @@ public class TBExpt {
     // TBUtils.print(pen, emptyBox);
 
 
-    TextLine hello = new TextLine("Hello");
-    TextLine goodbye = new TextLine("Goodbye");
+    //TextLine hello = new TextLine("Hello");
+    //TextLine goodbye = new TextLine("Goodbye");
 
-    VComposition helloGoodbye = new VComposition(hello, goodbye);
+    //VComposition helloGoodbye = new VComposition(hello, goodbye);
 
     // TBUtils.print(pen, new BoxedBlock(helloGoodbye));
     
-    //  BoxedBlock helloBox = new BoxedBlock(hello);
-    //  BoxedBlock goodbyeBox = new BoxedBlock(goodbye);
+    // BoxedBlock helloBox = new BoxedBlock(hello);
+      
+    // HorizontallyFlipped helloBoxFlipped = new HorizontallyFlipped(helloBox);
+    // HorizontallyFlipped helloBoxFlipped2 = new HorizontallyFlipped(helloBox);
+    // TBUtils.print(pen, helloBoxFlipped);
+    // TBUtils.print(pen, helloBoxFlipped2);
 
-    // pen.println(helloBox.eqv(goodbyeBox));
+    //  BoxedBlock goodbyeBox = new BoxedBlock(goodbye);
 
     // VComposition helloGoodbye2 = new VComposition(helloBox, goodbyeBox);
     // TBUtils.print(pen, helloGoodbye2);
 
-    HComposition helloGoodbye3 = new HComposition(hello, goodbye);
-    TBUtils.print(pen, helloGoodbye3);
+    // HComposition helloGoodbye3 = new HComposition(hello, goodbye);
+    // TBUtils.print(pen, helloGoodbye3);
     
-    HComposition helloGoodbye4 = new HComposition(goodbye, hello);
-    TBUtils.print(pen, helloGoodbye4);
-
-    pen.println(helloGoodbye3.eqv(helloGoodbye4));
+    // HComposition helloGoodbye4 = new HComposition(goodbye, hello);
+    // TBUtils.print(pen, helloGoodbye4);
 
     // VComposition helloHello = new VComposition(hello, hello);
     // TBUtils.print(pen, helloHello);
@@ -71,7 +74,6 @@ public class TBExpt {
     // }
     //  Truncated helloT = new Truncated(block, 2);
     //  Truncated helloGoodbyeT = new Truncated(helloGoodbye, 4);
-
     // TBUtils.print(pen, helloT);
     // TBUtils.print(pen, helloGoodbye);
     // TBUtils.print(pen, helloGoodbyeT);
@@ -79,11 +81,9 @@ public class TBExpt {
     // RightJustified right10 = new RightJustified(helloGoodbye, 5);
     // RightJustified right20 = new RightJustified(helloGoodbye, 20);
     // RightJustified right100 = new RightJustified(helloGoodbye, 100);
-
     // Centered right10 = new  Centered(helloGoodbye, 5);
     // Centered right20 = new  Centered(helloGoodbye, 20);
     // Centered right100 = new Centered(helloGoodbye, 100);
-
     // TBUtils.print(pen, right10);
     // TBUtils.print(pen, right20);
     // TBUtils.print(pen, right100);
@@ -91,13 +91,12 @@ public class TBExpt {
     // HorizontallyFlipped helloHF = new HorizontallyFlipped(helloGoodbye);
     // VerticallyFlipped helloVF = new VerticallyFlipped(helloGoodbye);
     // LeetSpeak helloLeet = new LeetSpeak(helloGoodbye);
-
     // TBUtils.print(pen, helloHF);
     // TBUtils.print(pen, helloVF);
     // TBUtils.print(pen, helloLeet);
 
     // Clean up after ourselves.
-    pen.close(); 
+    //pen.close(); 
 
   
 

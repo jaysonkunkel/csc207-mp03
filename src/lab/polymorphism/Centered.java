@@ -69,7 +69,8 @@ public class Centered implements TextBlock{
     else{
       String padFront = TBUtils.spaces((mw - w) / 2);
       String padBack = padFront;
-      return "|" + padFront + this.contents.row(i) + padBack + "|";
+      //return "|" + padFront + this.contents.row(i) + padBack + "|";
+      return padFront + this.contents.row(i) + padBack;
     }
   } // row(int)
 
