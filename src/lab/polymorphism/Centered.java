@@ -31,8 +31,10 @@ public class Centered implements TextBlock{
   {
     this.contents = _contents;
 
-    if(_maxWidth < 0 ){
-      throw new Exception("Invalid width " + _maxWidth);
+    if(_maxWidth < _contents.width() ){
+     //throw new Exception("Invalid width " + _maxWidth);
+     this.maxWidth = Math.abs(_maxWidth);
+     this.contents = new Truncated(_contents, this.maxWidth);
     }
     else{
       this.maxWidth = _maxWidth;
