@@ -1,8 +1,9 @@
 package lab.polymorphism;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
+import org.opentest4j.TestAbortedException;
 
 /**
  * Test suites for TBUtils.equal, TBUtils.eqv, and TBUtils.eq
@@ -154,4 +155,71 @@ public class TextBlockTests {
     assertEquals(false, TBUtils.eq(helloFlippedTwice, new TextLine("Hello")),
       "a twice-flipped block and the original block do not occupy the same memory location");
   }
+
+  // add tests for centered, leet, right j, vertically flipped
+
+  /**
+   * Tests for the Centered blocks
+   */
+  @Test
+  public void testCentered() throws Exception{
+    Centered centered = new Centered(new LeetSpeak(new TextLine("computer science")), 10);
+    assertEquals(false, TBUtils.equal(centered, new LeetSpeak(new TextLine("computer science"))));
+    
+    assertEquals(true, TBUtils.eqv(centered, new Centered(new LeetSpeak(new TextLine("")),7)));
+  }
+
+  //Tests for the RightJustified blocks
+  @Test
+  public void testRightJustified() throws Exception{
+    RightJustified rj = new RightJustified(new LeetSpeak(new TextLine("hello")), 10);
+    assertEquals(true, TBUtils.eqv(rj, new RightJustified(new LeetSpeak(new TextLine("hello")), 5)));
+  }
+
+  //Tests for the LeetSpeak blocks
+  @Test
+  public void testLeetSpeak() throws Exception{
+    LeetSpeak ls = new LeetSpeak(new TextLine("computer science"));
+    LeetSpeak ls2 = ls;
+    assertEquals(true, TBUtils.eq(ls, ls2));
+    assertEquals(true, TBUtils.eqv(ls, new LeetSpeak(new TextLine(""))));
+    assertEquals(true, TBUtils.equal(new TextLine(""), new LeetSpeak(new TextLine(""))));
+  }
+
+  // Tests for the verticallyFLipped blocks
+  @Test
+  public void testVerticallyFlipped() throws Exception{
+    VComposition vc = new VComposition(new TextLine("hello"), new TextLine("goodbye"));
+    VerticallyFlipped vf = new VerticallyFlipped(vc);
+    assertEquals(false, TBUtils.equal(vf, vc));
+    assertEquals(true, TBUtils.equal(vc, new VerticallyFlipped(vf)));
+
+    VerticallyFlipped vf2 = new VerticallyFlipped( new VComposition(new TextLine(""), new TextLine("")));
+    assertEquals(true, TBUtils.equal(vf2, new VerticallyFlipped( new VComposition(new TextLine(""), new TextLine("")))));
+
+    assertEquals(true, TBUtils.eqv(vf, vf2));
+
+  }
+
+  /**
+   * Tests structures with empty blocks that I did not do so previously.
+   */
+  @Test
+  public void testRestWithEmptyBlocks() throws Exception{
+    // boxedblock, hcomp, horiz flipped, truncated
+    BoxedBlock bb = new BoxedBlock(new TextLine("hello"));
+    assertEquals(true, TBUtils.eqv(bb, new BoxedBlock(new TextLine(""))));
+    
+    HComposition hc = new HComposition(new TextLine(""), new TextLine(""));
+    TextBlock tb = hc;
+    assertEquals(true, TBUtils.eq(tb, hc));
+
+    HorizontallyFlipped hv = new HorizontallyFlipped(new TextLine(""));
+    assertEquals(true, TBUtils.equal(hv, new HorizontallyFlipped(hv)));
+
+    Truncated t = new Truncated(bb, 3);
+    assertEquals(false, TBUtils.eqv(t, new Truncated(new TextLine(""), 2)));
+
+  }
+
 }
